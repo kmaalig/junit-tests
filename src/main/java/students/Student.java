@@ -27,6 +27,11 @@ public class Student {
         return name;
     }
 
+    // returns the list of grades
+    public ArrayList<Integer> getGrades(){
+        return grades;
+    }
+
     // adds the given grade to the grades list
     public void addGrade(int grade){
         grades.add(grade);
@@ -34,21 +39,24 @@ public class Student {
 
     // removes the given grade from the grades list
     public void deleteGrade(int grade) {
-        grades.remove(grade);
+       //
+        for(int i = 0; i < getGrades().size(); i++) {
+            // if the grade at the index is equal
+            if(grade == getGrades().get(i)) {
+                // remove grade
+                grades.remove(i);
+                break;
+            }
+        }
     }
 
     // updates the given grade based on index in the grades list
     public void updateGrade(int index, int grade) {
-        grades.add(index, grade);
-    }
-
-    // returns the list of grades
-    public ArrayList<Integer> getGrades(){
-        return grades;
+        grades.set(index, grade);
     }
 
     // returns the average of the students grades
-    public double getGradeAverage(){
+    public double getAverage(){
         // Set variable for grade average
         double average = 0;
         // Calculate grade average with for loop
@@ -58,5 +66,6 @@ public class Student {
         // Return average from grades [Arraylist]
         return average / grades.size();
     }
+
 
 }
